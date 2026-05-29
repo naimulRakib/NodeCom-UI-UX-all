@@ -1,65 +1,182 @@
-import Image from "next/image";
+'use client';
+
+import { useState } from 'react';
+import { Smartphone, Store, Shield, ChevronRight, AlertTriangle, Sparkles } from 'lucide-react';
+import Link from 'next/link';
+import CustomerView from '@/components/CustomerView';
+import SellerView from '@/components/SellerView';
+import AdminView from '@/components/AdminView';
+
+type View = 'customer' | 'seller' | 'admin';
 
 export default function Home() {
+  const [activeView, setActiveView] = useState<View>('customer');
+
+  const views = [
+    {
+      key: 'customer' as View,
+      label: 'গ্রাহক',
+      sublabel: 'কাস্টমার অ্যাপ',
+      icon: <Smartphone className="w-4 h-4" />,
+      color: 'from-indigo-500 to-purple-600',
+      activeColor: 'bg-indigo-600',
+      badge: 'মোবাইল',
+    },
+    {
+      key: 'seller' as View,
+      label: 'বিক্রেতা',
+      sublabel: 'সেলার ড্যাশবোর্ড',
+      icon: <Store className="w-4 h-4" />,
+      color: 'from-emerald-500 to-teal-600',
+      activeColor: 'bg-emerald-600',
+      badge: 'ট্যাবলেট',
+    },
+    {
+      key: 'admin' as View,
+      label: 'অ্যাডমিন',
+      sublabel: 'গ্লোবাল অর্কেস্ট্রেটর',
+      icon: <Shield className="w-4 h-4" />,
+      color: 'from-amber-500 to-orange-600',
+      activeColor: 'bg-amber-600',
+      badge: 'ডেস্কটপ',
+    },
+  ];
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="min-h-screen flex flex-col font-sans" style={{ background: '#030712' }}>
+      {/* Top Navigation Bar */}
+      <nav className="sticky top-0 z-50 border-b border-white/5"
+        style={{ background: 'rgba(3, 7, 18, 0.95)', backdropFilter: 'blur(20px)' }}>
+        <div className="max-w-screen-2xl mx-auto px-4 py-3">
+          <div className="flex items-center justify-between gap-4">
+            {/* Logo */}
+            <div className="flex items-center gap-3 flex-shrink-0">
+              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center glow-indigo">
+                <span className="text-white font-black text-base">N</span>
+              </div>
+              <div className="hidden sm:block">
+                <p className="text-white font-bold text-sm leading-none">নোডঅন-কমার্স</p>
+                <p className="text-indigo-400 text-xs mt-0.5">হাইপারলোকাল ডিসেন্ট্রালাইজড প্ল্যাটফর্ম</p>
+              </div>
+            </div>
+
+            {/* View Switcher - Center */}
+            <div className="flex-1 flex justify-center">
+              <div className="flex items-center gap-1 p-1 rounded-2xl glass">
+                {views.map((view) => {
+                  const isActive = activeView === view.key;
+                  return (
+                    <button
+                      key={view.key}
+                      onClick={() => setActiveView(view.key)}
+                      className={`relative flex items-center gap-2 px-3 sm:px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ${isActive
+                          ? `${view.activeColor} text-white`
+                          : 'text-slate-400 hover:text-white hover:bg-white/5'
+                        }`}
+                      style={isActive ? { boxShadow: '0 4px 15px rgba(0,0,0,0.3)' } : {}}
+                    >
+                      {view.icon}
+                      <span className="hidden sm:inline">{view.label}</span>
+                      <span className="sm:hidden">{view.label}</span>
+                      {isActive && (
+                        <span className="hidden md:inline text-xs opacity-70 font-normal ml-1">
+                          ({view.badge})
+                        </span>
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Right Info */}
+            <div className="flex items-center gap-2 flex-shrink-0">
+              <Link
+                href="/problems"
+                className="hidden sm:flex items-center gap-2 rounded-xl px-3 py-2 text-xs font-semibold transition-all border metric-card hover:bg-rose-500/10"
+                style={{
+                  background: 'rgba(127,29,29,0.2)',
+                  borderColor: 'rgba(127,29,29,0.5)',
+                  color: '#f87171',
+                }}
+              >
+                <AlertTriangle className="w-3.5 h-3.5" />
+                সমস্যা
+              </Link>
+              <Link
+                href="/solutions"
+                className="hidden sm:flex items-center gap-2 rounded-xl px-3 py-2 text-xs font-semibold transition-all border metric-card hover:bg-emerald-500/10"
+                style={{
+                  background: 'rgba(16,185,129,0.12)',
+                  borderColor: 'rgba(52,211,153,0.45)',
+                  color: '#34d399',
+                }}
+              >
+                <Sparkles className="w-3.5 h-3.5" />
+                সমাধান
+              </Link>
+              <div className="hidden sm:flex items-center gap-2 glass rounded-xl px-3 py-2">
+                <span className="w-2 h-2 bg-emerald-400 rounded-full pulse-dot" />
+                <span className="text-emerald-400 text-xs font-medium">প্রোটোটাইপ v১.০</span>
+              </div>
+            </div>
+          </div>
+
+          {/* View Context Bar */}
+          <div className="flex items-center gap-2 mt-2 pt-2 border-t border-white/5">
+            <span className="text-slate-600 text-xs">বর্তমান ভিউ:</span>
+            <div className="flex items-center gap-1.5">
+              {views.find(v => v.key === activeView)?.icon}
+              <span className="text-slate-300 text-xs font-medium">
+                {views.find(v => v.key === activeView)?.label} —
+                {' '}{views.find(v => v.key === activeView)?.sublabel}
+              </span>
+            </div>
+            <ChevronRight className="w-3 h-3 text-slate-600" />
+            <span className="text-slate-600 text-xs">{views.find(v => v.key === activeView)?.badge} ভিউ</span>
+
+            {/* Quick switch hints */}
+            <div className="ml-auto flex gap-2">
+              {views.filter(v => v.key !== activeView).map(v => (
+                <button
+                  key={v.key}
+                  onClick={() => setActiveView(v.key)}
+                  className="text-xs text-slate-600 hover:text-slate-400 transition-colors"
+                >
+                  {v.label} →
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+      </nav>
+
+      {/* View Content */}
+      <main className="flex-1">
+        {activeView === 'customer' && <CustomerView />}
+        {activeView === 'seller' && <SellerView />}
+        {activeView === 'admin' && <AdminView />}
       </main>
+
+      {/* Bottom Navigation (mobile floating switcher) */}
+      <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-40 sm:hidden">
+        <div className="flex items-center gap-1 p-1.5 rounded-2xl border border-white/10"
+          style={{ background: 'rgba(3, 7, 18, 0.9)', backdropFilter: 'blur(20px)', boxShadow: '0 8px 32px rgba(0,0,0,0.5)' }}>
+          {views.map((view) => (
+            <button
+              key={view.key}
+              onClick={() => setActiveView(view.key)}
+              className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-medium transition-all ${activeView === view.key
+                  ? `${view.activeColor} text-white`
+                  : 'text-slate-500'
+                }`}
+            >
+              {view.icon}
+              {activeView === view.key && view.label}
+            </button>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
