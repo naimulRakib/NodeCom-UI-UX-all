@@ -1,5 +1,6 @@
 #  NodeCommerce UI: Native Bengali & Hyper-Responsive Frontend
 
+Responsive Link: https://glowing-madeleine-50cf01.netlify.app/
 > **The ultra-fast, decentralized logistics interface built for the next billion users.**
 
 [![Next.js](https://img.shields.io/badge/Next.js-14-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
