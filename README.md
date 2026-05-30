@@ -1,37 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+#  NodeCommerce UI: Native Bengali & Hyper-Responsive Frontend
 
-## Getting Started
+> **The ultra-fast, decentralized logistics interface built for the next billion users.**
 
-First, run the development server:
+[![Next.js](https://img.shields.io/badge/Next.js-14-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://reactjs.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![Framer Motion](https://img.shields.io/badge/Framer_Motion-black?style=for-the-badge&logo=framer)](https://www.framer.com/motion/)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+<img width="1148" height="831" alt="Screenshot 2026-05-29 at 6 07 58 PM" src="https://github.com/user-attachments/assets/b0cc4ef5-0b42-4a3c-9770-8fafc2f10b53" />
+<img width="1470" height="831" alt="Screenshot 2026-05-29 at 6 23 43 PM" src="https://github.com/user-attachments/assets/13218b03-d671-4f5c-80b2-a62109eb8370" />
+<img width="1470" height="831" alt="Screenshot 2026-05-29 at 6 24 18 PM" src="https://github.com/user-attachments/assets/c48fbacc-acba-41db-bc2f-fb4c71a6cfc8" />
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+This repository contains the frontend architecture for **NodeCommerce AI**. To truly connect with densely populated markets, we abandoned clunky translations and heavy payloads. Instead, we built a 100% native Bengali, hyper-responsive interface designed to run flawlessly on low-end mobile devices while maintaining a premium, high-speed user experience.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+##  Key Features
 
-To learn more about Next.js, take a look at the following resources:
+### 🇧🇩 100% Native Bengali Localization
+We didn't just translate English text; we designed the UI around the Bengali language's typography and flow. This removes friction and builds instant trust with local consumers and node resellers.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### ⚡ Hyper-Responsive & Mobile-First
+Built with Tailwind CSS to ensure the layout adapts seamlessly to any screen size. The UI is aggressively optimized to render quickly on budget smartphones under slow network conditions.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+###  Real-Time KPI Dashboards
+Includes beautifully choreographed, data-driven dashboards (powered by Recharts) to visualize:
+* AI Forecast Accuracy
+* Route Cost Reductions
+* Dynamic 1-2 Hour Delivery SLA Timers
+* Reseller Margin Savings
 
-## Deploy on Vercel
+###  Decentralized Mesh Visualizer
+Interactive canvas elements that simulate the Ant Colony Optimization (ACO) routing, showing consumers and resellers exactly how stock is shifting around their neighborhood in real-time.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# NodeCom-UI-UX-all
+##  Screenshots & UI Previews
+
+<p align="center">
+  <img src="./assets/mobile-ui-preview.png" alt="NodeCommerce Mobile UI" width="300" style="border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); margin-right: 20px;"/>
+  <img src="./assets/dashboard-preview.png" alt="NodeCommerce KPI Dashboard" width="500" style="border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);"/>
+</p>
+
+---
+
+## 🛠️ Tech Stack
+
+* **Core Framework:** [Next.js (App Router)](https://nextjs.org/)
+* **UI Library:** [React](https://react.dev/)
+* **Styling:** [Tailwind CSS](https://tailwindcss.com/) for utility-first responsive design.
+* **Animations:** Vanilla CSS transitions and Canvas API (for the mesh/hub simulations).
+* **Data Visualization:** [Recharts](https://recharts.org/) for rendering the live KPI metrics.
+* **Icons:** FontAwesome / Heroicons
+
+---
+
+## <img width="1825" height="4482" alt="NodeCommerceUI@2x" src="https://github.com/user-attachments/assets/e5570d58-fa99-44a6-a8be-70e4b664a828" />
+ Getting Started
+
+Follow these steps to run the UI locally on your machine.
+
+### Prerequisites
+* Node.js (v18 or higher)
+* npm or yarn
+
+### Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/yourusername/nodecommerce-ui.git](https://github.com/yourusername/nodecommerce-ui.git)
+   cd nodecommerce-ui
